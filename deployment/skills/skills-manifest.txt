@@ -1,0 +1,40 @@
+# skills-manifest.txt
+# Machine-readable manifest for "INSTALL NOW" items from DEPLOYMENT.md Part 4, section 1.
+# Format (tab-separated): <method>\t<owner/repo>\t<target-or-note>
+#
+# Third field: for clone-skill it is "<target-dir> :: <optional human note>" (text
+# before " :: " becomes ~/.claude/skills/<target-dir>); for pip/npm it is the command
+# to run; for mcp/plugin/manual it is the instruction text.
+#
+# Methods:
+#   clone-skill  git clone the repo shallow, copy the skill folder(s) (any dir containing
+#                SKILL.md, else the whole repo) into ~/.claude/skills/<target>
+#   pip          pip install command to run on the PC
+#   npm          npm install command to run on the PC
+#   mcp          claude mcp add command to register an MCP server
+#   plugin       in-app "/plugin marketplace add owner/repo" or "/plugin install" step -
+#                NOT scriptable from outside Claude Code, printed as an instruction
+#   manual       anything else that needs a human decision/action
+#
+# Lines beginning with # are comments and are ignored by the install scripts.
+clone-skill	LottieFiles/motion-design-skill	motion-design
+clone-skill	bradautomates/claude-video	claude-video
+clone-skill	robonuggets/hyperframes-helper	hyperframes-helper :: requires Node 18+ and ffmpeg on the PC
+clone-skill	heretorecord/ograf-graphics-skill	ograf-graphics
+clone-skill	jamditis/claude-skills-journalism	claude-skills-journalism :: cherry-pick verification + data-journalism skills only, skip academic-writing
+clone-skill	coreyhaines31/marketingskills	marketingskills :: cherry-pick growth + analytics + copywriting modules only, skip SEO/CRO bulk
+clone-skill	mvanhorn/last30days-skill	last30days
+pip	mshumer/unslop	pip install <package name per repo README - verify exact name/CLI> :: run against promo-copy and social-copy domains, feed generated skill.md into the skill library manually
+clone-skill	kepano/obsidian-skills	obsidian :: pair with obsidian-git for safety
+clone-skill	komal-SkyNET/claude-skill-homeassistant	homeassistant :: point at Home Assistant over Tailscale
+mcp	homeassistant-ai/ha-mcp	claude mcp add ha-mcp -- <command per repo README, HA reachable over Tailscale>
+npm	googleworkspace/cli	npm install -g <package name per repo README> :: pre-1.0, pin the version; then copy only the bundled Agent Skills you actually use into ~/.claude/skills
+plugin	anthropics/claude-plugins-official	/plugin marketplace add anthropics/claude-plugins-official ; then browse and install selectively
+plugin	obra/superpowers	/plugin marketplace add obra/superpowers ; adopt methodology skills selectively, disable duplicates of skill-writer/tdd-workflow/scope-lock
+plugin	revfactory/harness	/plugin marketplace add revfactory/harness ; requires env var CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
+mcp	louislva/claude-peers-mcp	claude mcp add claude-peers -- <command per repo README>
+plugin	thedotmack/claude-mem	/plugin install thedotmack/claude-mem (per repo README) :: 5-minute experiment against _STATE/session-start-hook, do not run alongside other memory hooks
+mcp	ChromeDevTools/chrome-devtools-mcp	claude mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
+pip	8ddieHu0314/Skill-Lab	pip install <package name per repo README, Python 3.10+> :: wire into skill-creator workflow; use it to vet everything else in this manifest
+clone-skill	yetone/kill-ai-slop	kill-ai-slop
+manual	google-labs-code/design.md	Adopt the DESIGN.md convention (clone repo as reference only, not a skill); write a DESIGN.md for WFSB brand and one for personal projects

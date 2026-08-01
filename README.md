@@ -32,6 +32,9 @@ A simple, beautiful web application to view and explore anyone's GitHub starred 
 ### Live Demo
 Simply open `index.html` in your browser, or host it on GitHub Pages!
 
+### This fork
+This fork is configured for **[@qunewsguy16](https://github.com/qunewsguy16)** - opening the app auto-loads that user's stars. All 763 starred repos were also individually analyzed into a deployment plan — see [DEPLOYMENT.md](DEPLOYMENT.md) (PC / NAS / cloud / Claude Code skills), the full per-repo classification in [deployment/ANALYSIS.md](deployment/ANALYSIS.md), and the remaining human steps in [WIZARD.md](WIZARD.md). To view someone else, use the search box, or link directly with `?user=<name>` / `#<name>` in the URL. Change the `DEFAULT_USERNAME` constant at the top of `script.js` to point the app at a different default account.
+
 ### Usage
 1. Enter any GitHub username in the search box
 2. Click "Load Stars" or press Enter

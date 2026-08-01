@@ -1,3 +1,7 @@
+// Default user for this fork - the app auto-loads these stars on open.
+// Override with ?user=<name> or #<name> in the URL.
+const DEFAULT_USERNAME = 'qunewsguy16';
+
 // GitHub language colors (subset)
 const LANGUAGE_COLORS = {
     'JavaScript': '#f1e05a',
@@ -30,6 +34,22 @@ class GitHubStarsViewer {
 
         this.initEventListeners();
         this.displayRecentSearches();
+        this.autoLoadDefaultUser();
+    }
+
+    autoLoadDefaultUser() {
+        const params = new URLSearchParams(window.location.search);
+        const rawHash = window.location.hash.replace(/^#\/?/, '');
+        let fromHash;
+        try {
+            fromHash = decodeURIComponent(rawHash);
+        } catch {
+            fromHash = rawHash;
+        }
+        const username = (params.get('user') || fromHash || DEFAULT_USERNAME).trim();
+        if (!username) return;
+        document.getElementById('usernameMain').value = username;
+        this.loadStars(username);
     }
 
     initEventListeners() {
